@@ -21,6 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "BlogAdminServlet", urlPatterns = {"/BlogAdminServlet"})
 public class BlogAdminServlet extends HttpServlet {
 
+    public BlogAdminServlet() {
+        
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

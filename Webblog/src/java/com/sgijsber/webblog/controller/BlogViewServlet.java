@@ -6,9 +6,15 @@
 
 package com.sgijsber.webblog.controller;
 
+import com.sgijsber.webblog.model.Posting;
+import com.sgijsber.webblog.service.WebLogService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +23,30 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
+@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet"})
 public class BlogViewServlet extends HttpServlet {
+    
+    public ArrayList<Posting> postings = new ArrayList<>();
+    private WebLogService service;
 
+    public ArrayList<Posting> getPostings() {
+        return postings;
+    }
+
+    public void setPostings(ArrayList<Posting> postings) {
+        this.postings = postings;
+    }
+
+    @Override
+    public void init() {
+        System.out.println("BlogViewServlet initialized");
+        service = new WebLogService();
+        postings = (ArrayList<Posting>) service.getPostings();
+        
+        ServletContext sc = getServletContext();
+        sc.setAttribute("postings", postings); 
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,15 +61,9 @@ public class BlogViewServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BlogViewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BlogViewServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            RequestDispatcher view = request.getRequestDispatcher("WebBlog.jsp");
+            view.forward(request,response);
         }
     }
 
@@ -57,6 +79,14 @@ public class BlogViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("BlogViewServlet doGet called");
+        if (service == null){
+            service = new WebLogService();
+        }
+        
+        this.postings = (ArrayList<Posting>) service.getPostings();
+        request.setAttribute("postings", postings);
+        
         processRequest(request, response);
     }
 
@@ -71,6 +101,7 @@ public class BlogViewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("BlogViewServlet doPost called");
         processRequest(request, response);
     }
 

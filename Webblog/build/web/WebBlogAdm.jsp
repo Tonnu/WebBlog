@@ -20,6 +20,7 @@
             <div id="content_container">
                 <br />
                 <div class="posting_form">
+                    
                     <form name="posting_form" action="BlogAdminServlet" method="POST">
                         <p> Title: </p>
                         <input name="Title" type="text"></input>

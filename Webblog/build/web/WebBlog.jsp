@@ -4,6 +4,8 @@
     Author     : user
 --%>
 
+<%@page import="com.sgijsber.webblog.controller.BlogViewServlet"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="resources/css/WebblogPageLayout.css" /> 
+
+        <%@page  import="java.util.List" %> 
+        <%@page  import="com.sgijsber.webblog.model.Posting" %> 
     </head>
     <body>
         <div id="main_container">
@@ -23,7 +28,17 @@
                 <br />
                 <div class="posting_form">
                     <p>View Page</p>
-                    <form name="posting_form" action="BlogAdminServlet" method="POST">
+
+                    <%
+                        List<Posting> postings = (List<Posting>) session.getAttribute("postings");
+                        
+                        if(postings != null){
+                            out.println(String.format("<p>%s<p>", postings.toString()));
+                        } else {
+                            out.println("<p>No postings found</p>");
+                        }
+                    %>
+                    <form name="posting_form" action="BlogViewServlet" method="POST">
                         <p> Title: </p>
                         <input name="Title" type="text"></input>
                         <br />
