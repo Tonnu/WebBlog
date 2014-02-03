@@ -9,7 +9,6 @@ package com.sgijsber.webblog.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name = "BlogAdminServlet", urlPatterns = {"/BlogAdminServlet"})
-public class BlogAdminServlet extends HttpServlet {
+public class BlogViewServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,19 +33,13 @@ public class BlogAdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            String title = (String) request.getParameter("Title");
-            String posting = (String) request.getParameter("Posting");
-            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BlogAdminServlet</title>");            
+            out.println("<title>Servlet BlogViewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet BlogAdminServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Title : " + title + "</h1>");
-            out.println("<h1>Posting :  " + posting + "</h1>");
+            out.println("<h1>Servlet BlogViewServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
