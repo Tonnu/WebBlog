@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="JAE61">
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/web/WebBlogAdm.jsp</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/controller/BlogAdminServlet.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/web/WebBlog.jsp</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/controller/BlogViewServlet.java</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/service/WebLogService.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/controller/BlogAdminServlet.java</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/dao/PostingDao.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/web/WebBlogAdm.jsp</file>
             <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/dao/PostingDaoImp.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/service/WebLogService.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/webblog_remote/Webblog/src/java/com/sgijsber/webblog/controller/BlogViewServlet.java</file>
         </group>
     </open-files>
 </project-private>

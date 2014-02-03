@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet"})
+@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet", "/"})
 public class BlogViewServlet extends HttpServlet {
     
     public ArrayList<Posting> postings = new ArrayList<>();
@@ -42,7 +42,7 @@ public class BlogViewServlet extends HttpServlet {
         System.out.println("BlogViewServlet initialized");
         service = new WebLogService();
         postings = (ArrayList<Posting>) service.getPostings();
-        
+      
         ServletContext sc = getServletContext();
         sc.setAttribute("postings", postings); 
     }

@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Web blog</title>
         <link rel="stylesheet" href="resources/css/WebblogPageLayout.css" /> 
 
-        <%@page  import="java.util.List" %> 
-        <%@page  import="com.sgijsber.webblog.model.Posting" %> 
+        <%@page import="java.util.List" %> 
+        <%@page import="com.sgijsber.webblog.model.Posting" %> 
     </head>
     <body>
         <div id="main_container">
@@ -28,16 +28,12 @@
                 <br />
                 <div class="posting_form">
                     <p>View Page</p>
-
-                    <%
-                        List<Posting> postings = (List<Posting>) session.getAttribute("postings");
-                        
-                        if(postings != null){
-                            out.println(String.format("<p>%s<p>", postings.toString()));
-                        } else {
-                            out.println("<p>No postings found</p>");
-                        }
-                    %>
+                    <form>
+                    <c:forEach var="post" items="#{postings}" >
+                        <br />
+                        <c:out value="${post.content}"></c:out>
+                    </c:forEach>
+                    </form>
                     <form name="posting_form" action="BlogViewServlet" method="POST">
                         <p> Title: </p>
                         <input name="Title" type="text"></input>
