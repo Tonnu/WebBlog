@@ -1,0 +1,5 @@
+com\sgijsber\webblog\model\Comment.class
+com\sgijsber\webblog\dao\PostingDaoImp.class
+com\sgijsber\webblog\service\WebLogService.class
+com\sgijsber\webblog\model\Posting.class
+com\sgijsber\webblog\dao\PostingDao.class
