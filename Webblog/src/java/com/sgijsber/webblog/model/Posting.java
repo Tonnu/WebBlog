@@ -31,6 +31,7 @@ public class Posting {
         this.comments = new ArrayList<Comment>();
         
         this.comments.add(new com.sgijsber.webblog.model.Comment(1L, "First!"));
+        this.comments.add(new com.sgijsber.webblog.model.Comment(2L, "Second!"));
     }
 
     public List<Comment> getComments() {

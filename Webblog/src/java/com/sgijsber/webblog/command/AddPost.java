@@ -32,7 +32,7 @@ public class AddPost extends Command  {
         WebLogService.addPosting(newPost);
         
         try {
-            showPage(request, response, "/WebBlog.jsp");
+            showPage(request, response, "ListBlogs");
         } catch (ServletException | IOException ex) {
             System.err.println("Could not redirect from command AddPost to /WebBlog.jsp");
         }

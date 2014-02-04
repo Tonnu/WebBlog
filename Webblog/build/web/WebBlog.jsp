@@ -45,10 +45,11 @@
                                 </div>
                         </c:forEach>
                         <br />
-                        <form name="comment_form" action="BlogViewServlet" method="POST">
+                        <form name="comment_form" action="AddComment" method="POST">
                             <input name="Comment" type="text" class="comment_textArea"></input>
+                            <input name="hidden_postID" type="hidden" value="${post.id}"></input>
                             <br />
-                            <button name="submit_comment" type="submit"> add Comment </button>
+                            <button name="submit_comment" type="submit" id="comment_button"> Comment </button>
                         </form>
                         <br />
                         </div>

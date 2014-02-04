@@ -27,6 +27,7 @@ public class CommandFactory{
         commands.put("/ListBlogs", new ListBlogs(null, null));
         commands.put("/ShowAdmin", new ShowAdmin(null, null));
         commands.put("/AddPost", new AddPost(null, null));
+        commands.put("/AddComment", new AddComment(null, null));
         
         System.out.println("--- CommandFactory Initialized");
     }

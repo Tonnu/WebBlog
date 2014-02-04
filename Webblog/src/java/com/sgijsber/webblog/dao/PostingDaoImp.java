@@ -4,6 +4,7 @@
  */
 package com.sgijsber.webblog.dao;
 
+import com.sgijsber.webblog.model.Comment;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,14 +42,10 @@ public class PostingDaoImp implements PostingDao {
         postings.put(nextId++, p);
     }
 
-    ;
-
     @Override
     public List<Posting> findAll() {
         return new ArrayList(postings.values());
     }
-
-    ;
 
      @Override
     public Posting find(Long id) {
@@ -56,5 +53,18 @@ public class PostingDaoImp implements PostingDao {
             throw new IllegalArgumentException("Id no found" + id);
         }
         return postings.get(id);
+    }
+
+    @Override
+    public void addComment(Long postID, Comment c) {
+        if  (postings.containsKey(postID)){
+            Posting post = postings.get(postID);
+            List<Comment> comments = post.getComments();
+            
+            comments.add(c);
+            post.setComments(comments);
+        } else {
+            throw new IllegalArgumentException("Id no found" + postID);
+        }
     }
 }

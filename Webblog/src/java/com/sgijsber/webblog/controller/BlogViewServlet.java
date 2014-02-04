@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet","/ListBlogs","/ShowAdmin","/AddPost"})
+@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet","/ListBlogs","/ShowAdmin","/AddPost","/AddComment"})
 public class BlogViewServlet extends HttpServlet {
     
     private CommandFactory commandFactory;

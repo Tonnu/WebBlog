@@ -4,6 +4,7 @@
  */
 package com.sgijsber.webblog.dao;
 
+import com.sgijsber.webblog.model.Comment;
 import java.util.List;
 import com.sgijsber.webblog.model.Posting;
 
@@ -14,4 +15,6 @@ public interface PostingDao {
     List<Posting> findAll();
 
     Posting find(Long id);
+    
+    void addComment(Long postID, Comment c);
 }
