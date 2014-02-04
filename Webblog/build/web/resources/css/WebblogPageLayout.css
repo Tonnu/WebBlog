@@ -29,20 +29,18 @@ body, html{
 
 #left_container{
     float: left;
-    width: 150px;
-    height: 200px;
+    width: 300px;
     background-color: #ECECEC;
 }
 
 #content_container{
-    height: 200px;
     background-color: #999;
-    margin: 0 250px 0 150px;
+    margin: 0 100px 0 300px;
 }
 
 #right_container{
     float: right;
-    width: 250px;
+    width: 100px;
     height: 200px;
     background-color: #ECECEC;
 }
@@ -59,4 +57,32 @@ body, html{
 .posting_form{
     width: 90%;
     margin: 0 5% 0 5%;
+    border: 1px solid #000;
+}
+
+.title {
+    font-family: sans-serif;
+    font-size: 1.4em;
+    font-style: oblique;
+}
+
+.post {
+    border: 1px solid #000;
+    margin: 0 5% 0 5%;
+    padding: 0 0 0 2%;
+    width: 88%;
+}
+
+.comment {
+    border: 1px solid #000;
+    margin: 0 3% 0 15%;
+    padding: 0 0 0 2%;
+    width: 80%;
+}
+
+.comment_textArea {
+    width: 300px;
+    height: 100px;
+    word-wrap: break-word;
+    text-align: initial;
 }

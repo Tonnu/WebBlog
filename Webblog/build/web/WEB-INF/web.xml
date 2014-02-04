@@ -5,16 +5,6 @@
     <welcome-file>WebBlog.jsp</welcome-file>
     </welcome-file-list>
     
-    <servlet>
-        <servlet-name>BlogViewServlet</servlet-name>
-        <servlet-class>com.sgijsber.webblog.controller.BlogViewServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>BlogViewServlet</servlet-name>
-        <url-pattern>/BlogViewServlet</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

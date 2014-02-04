@@ -20,28 +20,40 @@
     <body>
         <div id="main_container">
             <div id="header_container">Header</div>
-            <div id="left_container"></div>
+            <div id="left_container">Left container</div>
             <div id="right_container">
-                <a href="/Webblog/WebBlogAdm.jsp">Admin page</a>
+                <a href="ShowAdmin">Add Post</a>
             </div>
             <div id="content_container">
                 <br />
-                <div class="posting_form">
-                    <p>View Page</p>
-                    <form>
+                <p>View Page</p>
+                <div>
                     <c:forEach var="post" items="#{postings}" >
+                        <div class="post">
+                        <form id="${post.id}">
+                            
+                            <p class="title"><c:out value="${post.title}"></c:out></p>
+                            <p><c:out value="${post.content}"></c:out></p>
+                            <p><c:out value="${post.date}"></c:out></p>
+                            
+                        </form>
+
+                        <c:forEach var="comment" items="#{post.comments}" >
+                            <div id="comment.id" class="comment">
+                                <p>Reaction no: <c:out value="${comment.id}"></c:out></p>
+                                <p><c:out value="${comment.content}"></c:out></p>
+                                </div>
+                        </c:forEach>
                         <br />
-                        <c:out value="${post.content}"></c:out>
+                        <form name="comment_form" action="BlogViewServlet" method="POST">
+                            <input name="Comment" type="text" class="comment_textArea"></input>
+                            <br />
+                            <button name="submit_comment" type="submit"> add Comment </button>
+                        </form>
+                        <br />
+                        </div>
+                            <br />
                     </c:forEach>
-                    </form>
-                    <form name="posting_form" action="BlogViewServlet" method="POST">
-                        <p> Title: </p>
-                        <input name="Title" type="text"></input>
-                        <br />
-                        <p> Posting: </p>
-                        <input name="Posting" type="text"></input>
-                        <button name="submit_button" type="submit" id="post_button"> add Posting </button>
-                    </form>
                 </div>
                 <br /><br />
             </div>

@@ -16,11 +16,14 @@
         <div id="main_container">
             <div id="header_container">Header</div>
             <div id="left_container"></div>
-            <div id="right_container"></div>
+            <div id="right_container">
+                <a href="ListBlogs">Blog page</a>
+            </div>
             <div id="content_container">
                 <br />
                 <div class="posting_form">
-                    <form name="posting_form" action="BlogAdminServlet" method="POST">
+                    
+                    <form name="posting_form" action="AddPost" method="POST">
                         <p> Title: </p>
                         <input name="Title" type="text"></input>
                         <br />

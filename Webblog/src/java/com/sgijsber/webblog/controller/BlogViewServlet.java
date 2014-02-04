@@ -6,11 +6,14 @@
 
 package com.sgijsber.webblog.controller;
 
+import com.sgijsber.webblog.command.Command;
+import com.sgijsber.webblog.command.CommandFactory;
 import com.sgijsber.webblog.model.Posting;
 import com.sgijsber.webblog.service.WebLogService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -23,28 +26,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet", "/"})
+@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet","/ListBlogs","/ShowAdmin","/AddPost"})
 public class BlogViewServlet extends HttpServlet {
     
-    public ArrayList<Posting> postings = new ArrayList<>();
-    private WebLogService service;
-
-    public ArrayList<Posting> getPostings() {
-        return postings;
-    }
-
-    public void setPostings(ArrayList<Posting> postings) {
-        this.postings = postings;
-    }
+    private CommandFactory commandFactory;
 
     @Override
     public void init() {
-        System.out.println("BlogViewServlet initialized");
-        service = new WebLogService();
-        postings = (ArrayList<Posting>) service.getPostings();
-      
-        ServletContext sc = getServletContext();
-        sc.setAttribute("postings", postings); 
+        System.out.println("--- BlogViewServlet initialized");
+        
+        commandFactory = new CommandFactory();
+        System.out.println(String.format("--- Factory instance: %s ", commandFactory.toString()));
+        System.out.println("---");
     }
     
     /**
@@ -58,13 +51,14 @@ public class BlogViewServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            
-            RequestDispatcher view = request.getRequestDispatcher("WebBlog.jsp");
-            view.forward(request,response);
-        }
+        //Retrieve the request path
+        System.out.println("Processing request");
+        String userPath = request.getServletPath();
+        
+        //Create a Command from the CommandFactory
+        System.out.println(String.format("User path: %s", userPath));
+        Command command = commandFactory.createCommand(userPath, request, response);
+        command.execute();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,12 +74,6 @@ public class BlogViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("BlogViewServlet doGet called");
-        if (service == null){
-            service = new WebLogService();
-        }
-        
-        this.postings = (ArrayList<Posting>) service.getPostings();
-        request.setAttribute("postings", postings);
         
         processRequest(request, response);
     }
@@ -102,6 +90,7 @@ public class BlogViewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("BlogViewServlet doPost called");
+        
         processRequest(request, response);
     }
 

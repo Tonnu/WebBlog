@@ -7,17 +7,13 @@ import java.util.List;
 
 public class WebLogService {
 
-    private PostingDao postingDao;
+    private static PostingDao postingDao = new PostingDaoImp();
 
-    public WebLogService() {
-        postingDao = new PostingDaoImp();
-    }
-
-    public void addPosting(Posting p) {
+    public static void addPosting(Posting p) {
         postingDao.create(p);
     }
 
-    public List<Posting> getPostings() {
+    public static List<Posting> getPostings() {
         return postingDao.findAll();
     }
 ;

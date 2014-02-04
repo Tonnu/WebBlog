@@ -29,6 +29,8 @@ public class Posting {
         this.content = content;
         this.date = new Date();
         this.comments = new ArrayList<Comment>();
+        
+        this.comments.add(new com.sgijsber.webblog.model.Comment(1L, "First!"));
     }
 
     public List<Comment> getComments() {
