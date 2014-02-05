@@ -35,7 +35,7 @@ public class AddComment extends Command {
             
             //Get a new comment ID
             List<Comment> comments = p.getComments();
-            Long highestID = -1L;
+            Long highestID = 0L;
             for (Comment comment : comments){
                 if (comment.getId() > highestID){
                     highestID = comment.getId();

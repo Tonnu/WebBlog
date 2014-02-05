@@ -8,14 +8,7 @@ package com.sgijsber.webblog.controller;
 
 import com.sgijsber.webblog.command.Command;
 import com.sgijsber.webblog.command.CommandFactory;
-import com.sgijsber.webblog.model.Posting;
-import com.sgijsber.webblog.service.WebLogService;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet","/ListBlogs","/ShowAdmin","/AddPost","/AddComment"})
+@WebServlet(name="BlogViewServlet", urlPatterns={"/BlogViewServlet","/ListBlogs","/ShowAdmin","/AddPost","/AddComment","/AddComment.json","/ListCommands.json"})
 public class BlogViewServlet extends HttpServlet {
     
     private CommandFactory commandFactory;
