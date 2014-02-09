@@ -6,6 +6,10 @@
 
 package com.sgijsber.webblog.command;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,16 +27,10 @@ public class NullCommand extends Command{
     
     @Override
     public void execute() {
-        //If you are executed, do nothing
-    }
-    
-    @Override
-    public void setRequest(HttpServletRequest request){
-        //Ignore when this is setted
-    }
-    
-    @Override
-    public void setResponse(HttpServletResponse response){
-        //Ignore when this is setted
+        try {
+            showPage(request, response, "/WEB-INF/NotFoundPage.jsp");
+        } catch (ServletException | IOException ex) {
+            System.err.println(String.format("Exception during execution of NullCommand : %s", ex.getMessage()));
+        } 
     }
 }

@@ -47,11 +47,11 @@ public class CommandFactory{
 
         if (returnCommand == null) {
             returnCommand = this.commands.get("NotFound");
-        } else {
-            returnCommand.setRequest(request);
-            returnCommand.setResponse(reponse);
-        }
-
+        } 
+        
+        returnCommand.setRequest(request);
+        returnCommand.setResponse(reponse);
+        
         return returnCommand;
     }
 

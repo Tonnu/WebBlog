@@ -5,18 +5,16 @@
 --%>
 
 <%@page import="com.sgijsber.webblog.controller.BlogViewServlet"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/WebblogPageLayout.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Web blog</title>
-        <link rel="stylesheet" href="resources/css/WebblogPageLayout.css" /> 
-
-        <%@page import="java.util.List" %> 
-        <%@page import="com.sgijsber.webblog.model.Posting" %> 
+        
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
         <div id="main_container">
@@ -38,9 +36,6 @@
                                 <p><c:out value="${post.date}"></c:out></p>
 
                                 </form>
-
-                            
-                            
 
                             <div id="comment_list_${post.id}">
                             </div>

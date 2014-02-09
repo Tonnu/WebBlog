@@ -31,7 +31,7 @@ public class ListBlogs extends Command {
             ServletContext sc = request.getServletContext();
             sc.setAttribute("postings", (ArrayList<Posting>) WebLogService.getPostings());
             
-            showPage(request, response, "/WebBlog.jsp");
+            showPage(request, response, "WebBlog.jsp");
         } catch (ServletException | IOException ex) {
             System.err.println(String.format("Error in command ListBlogs: %s", ex.getMessage()));
         }
