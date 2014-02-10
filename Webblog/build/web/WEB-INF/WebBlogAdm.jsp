@@ -10,14 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/WebblogPageLayout.css" /> 
-        <title>JSP Page</title>
+        <title>Web Blog Admin Page</title>
+        
     </head>
     <body>
         <div id="main_container">
             <div id="header_container">Header</div>
             <div id="left_container"></div>
             <div id="right_container">
-                <a href="ListBlogs">Blog page</a>
+                <div id="links">
+                <a href="ListBlogs" class="link">Blog page</a><br />
+                <a href="ChangeMode" class="link">Change mode</a>
+                </div>
             </div>
             <div id="content_container">
                 <br />
@@ -28,7 +32,7 @@
                         <input name="Title" type="text"></input>
                         <br />
                         <p> Posting: </p>
-                        <input name="Posting" type="text"></input>
+                        <textarea name="Posting"></textarea>
                         <button name="submit_button" type="submit" id="post_button"> add Posting </button>
                     </form>
                 </div>

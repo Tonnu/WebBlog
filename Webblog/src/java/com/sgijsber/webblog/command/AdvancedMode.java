@@ -6,10 +6,7 @@
 
 package com.sgijsber.webblog.command;
 
-import com.sgijsber.webblog.service.WebLogService;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,22 +15,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author user
  */
-public class ShowAdmin extends Command{
+public class AdvancedMode extends Command{
 
-    public ShowAdmin(HttpServletRequest request, HttpServletResponse response) {
+    public AdvancedMode(HttpServletRequest request, HttpServletResponse response) {
         super(request, response);
     }
 
     @Override
     public void execute() {
         try {
-            if(WebLogService.isAdvancedMode()){
-                showPage(request, response, "WEB-INF/WebBlogAdm_advanced.jsp");
-            }else {
-                showPage(request, response, "WEB-INF/WebBlogAdm.jsp");
-            }
+            showPage(request, response, "WEB-INF/WebBlogAdm_advanced.jsp");
         } catch (ServletException | IOException ex) {
-            System.err.println(String.format("Error while executing ShowAdmin: %s", ex.getMessage()));
+            System.err.println(String.format("Exception in AdvancedMode.execute() : %s", ex.getMessage()));
         }
     }
+    
 }

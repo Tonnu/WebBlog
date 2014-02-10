@@ -30,6 +30,9 @@ public class CommandFactory{
         commands.put("/AddComment", new AddComment(null, null));
         commands.put("/AddComment.json", new AddComment_json(null,null));
         commands.put("/ListCommands.json", new ListCommands_json(null, null));
+        commands.put("/ChangeMode", new ChangeMode(null, null));
+        commands.put("/EditPostContent", new EditPost(null, null));
+        commands.put("/RemovePost", new RemovePost(null, null));
         
         System.out.println("--- CommandFactory Initialized");
     }

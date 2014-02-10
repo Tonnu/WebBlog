@@ -67,4 +67,23 @@ public class PostingDaoImp implements PostingDao {
             throw new IllegalArgumentException("Id no found" + postID);
         }
     }
+
+    @Override
+    public void editPostContent(Long postID, String content) {
+        if  (postings.containsKey(postID)){
+            Posting post = postings.get(postID);
+            post.setContent(content);
+        } else {
+            throw new IllegalArgumentException("Id no found" + postID);
+        }
+    }
+
+    @Override
+    public void removePost(Long postID) {
+         if  (postings.containsKey(postID)){
+             postings.remove(postID);
+        } else {
+            throw new IllegalArgumentException("Id no found" + postID);
+        }
+    }
 }

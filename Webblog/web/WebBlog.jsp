@@ -15,89 +15,36 @@
         <title>Web blog</title>
         
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/js_listblog.js"></script>
     </head>
     <body>
         <div id="main_container">
-            <div id="header_container">Header</div>
-            <div id="left_container">Left container</div>
+            <div id="header_container"></div>
+            <div id="left_container">
+                <div id="about">
+                    <p class="subtitle">About</p>
+                </div>
+                <div id="pictures">
+                    <p class="subtitle">Pictures</p>
+                </div>
+                <div id="myfriends">
+                    <p class="subtitle">My Friends!</p>
+                    <p>Nobody</p>
+                </div>
+            </div>
             <div id="right_container">
-                <a href="ShowAdmin">Add Post</a>
+                <div id="links">
+                <a href="ShowAdmin" class="link">Add Post</a>
+                </div>
             </div>
             <div id="content_container">
                 <br />
-                <p>View Page</p>
-                <div>
-                    <c:forEach var="post" items="#{postings}" >
-                        <div class="post">
-                            <form id="${post.id}">
-
-                                <p class="title"><c:out value="${post.title}"></c:out></p>
-                                <p><c:out value="${post.content}"></c:out></p>
-                                <p><c:out value="${post.date}"></c:out></p>
-
-                                </form>
-
-                            <div id="comment_list_${post.id}">
-                            </div>
-                            <br />
-
-                            <!--<form name="comment_form" action="AddComment" method="POST">-->
-                                <input id="Comment_${post.id}" name="Comment" type="text" class="comment_textArea" />
-                                <input id="hidden_postID_${post.id}" name="hidden_postID" type="hidden" value="${post.id}" />
-                                <br />
-                                <input name="submit_comment" type="submit" id="${post.id}" onclick="updateCommentList(this.id)" value="Comment"/>
-                            <!--</form>-->
-                            <br />
-                        </div>
-                        <br />
-                    </c:forEach>
-                </div>
-
-
+                
+                <%@include file="/WEB-INF/templates/div_listblog.jsp" %>        
 
                 <br /><br />
             </div>
         </div>
-        <script>
-                    function updateCommentList(newPostID) {
-                    var stringPostID = newPostID.toString();
-                    commentDiv = '#comment_list_'.concat(stringPostID);
-                    
-                    $(commentDiv).empty();
-                            globalPostID = newPostID;
-                            
-                            var comment = document.getElementById("Comment_" + newPostID).value;
-                           
-                            $.getJSON("http://localhost:8080/Webblog/AddComment.json", {postID: String(globalPostID), Comment: comment}, processCommentList);
-                            
-                            function processCommentList(t) {
-                            $.each(t, function(index, data) {
-                            var divName = String(globalPostID).concat(data["id"]);
-                            $(commentDiv).append("<div id="+divName+"><p>Reaction no:"+data["id"]+"</p><p>"+data["content"]+"</p></div>");
-                            $("#"+divName).addClass("comment");
-                                });
-                            }
-                        }
-                 
-                $(document).ready(function(){
-                     
-                     $.getJSON("http://localhost:8080/Webblog/ListCommands.json", null, getCommentList);
-                     
-                     function getCommentList(t) {
-                         $.each(t, function(index, data) {
-                             var postID = data["id"];
-                             
-                             var commentDiv = "#comment_list_".concat(data["id"]);
-                             $(commentDiv).empty();
-                             
-                             $.each(data["comments"], function(index,comment) {
-                                    var commentDivID = String(postID).concat(comment["id"]);
-                                    $(commentDiv).append("<div id="+commentDivID+"><p>Reaction no:"+comment["id"]+"</p><p>"+comment["content"]+"</p></div>");
-                                    $("#"+commentDivID).addClass("comment");
-                             });
-                         });
-                     }
-                 });
-        </script>
+       
     </body>
 </html>

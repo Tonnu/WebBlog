@@ -17,4 +17,8 @@ public interface PostingDao {
     Posting find(Long id);
     
     void addComment(Long postID, Comment c);
+    
+    void editPostContent(Long postID, String content);
+    
+    void removePost(Long postID);
 }
